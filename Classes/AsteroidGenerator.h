@@ -9,6 +9,8 @@ public:
 	void init();
 
 private:
+	void spawnAsteroid();
 
+	float spawnInterval;
 };
 

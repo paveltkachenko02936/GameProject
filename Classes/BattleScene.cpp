@@ -1,4 +1,5 @@
 #include "BattleScene.h"
+#include "Game.h"
 
 USING_NS_CC;
 
@@ -15,6 +16,8 @@ bool BattleScene::init()
 {
 	if (!Scene::init())
 		return false;
+
+	Game::getInstance()->asteroidGenerator->init();
 
 	ship = Ship::create();
 	ship->createObject("playerShip2_green.png");

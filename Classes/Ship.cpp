@@ -42,7 +42,7 @@ void Ship::move(float dx, float dy)
 		pos.y + dy - size.height * _anchorPoint.y < origin.y ||
 		pos.y + dy + size.height * _anchorPoint.y > origin.y + visibleSize.height)
 	{
-		captured = false;
+	//	captured = false;
 		return;
 	}
 
