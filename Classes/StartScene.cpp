@@ -17,7 +17,7 @@ bool StartScene::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	MenuItemImage* playItem = MenuItemImage::create("play_btn_normal.png", "play_btn_push.png", CC_CALLBACK_1(StartScene::gotoNextScene, this));
+	MenuItemImage* playItem = MenuItemImage::create("GUI/play_btn_normal.png", "GUI/play_btn_push.png", CC_CALLBACK_1(StartScene::gotoNextScene, this));
 
 	if (playItem == nullptr)
 	{

@@ -3,24 +3,16 @@
 #include "cocos2d.h"
 #include "GameObject.h"
 
-class Ship: public GameObject
+class Asteroid: public GameObject
 {
 public:
-	Ship();
-	~Ship();
+	Asteroid();
+	~Asteroid();
 
 	void initialize(std::string filename) override;
 	void move(float dx, float dy) override;
-	void capture(bool value);
 
-	bool isCaptured();
-
-	CREATE_FUNC(Ship);
-
-	
 private:
-	bool captured;
+
 };
-
-
 

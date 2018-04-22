@@ -17,11 +17,8 @@ bool BattleScene::init()
 	if (!Scene::init())
 		return false;
 
-	Game::getInstance()->asteroidGenerator->init();
-
-	ship = Ship::create();
-	ship->createObject("playerShip2_green.png");
-	this->addChild(ship);
+	auto game = Game::getInstance();
+	game->asteroidGenerator->init();
 
 	auto touchListener = EventListenerTouchOneByOne::create();
 
@@ -32,11 +29,16 @@ bool BattleScene::init()
 
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
+	addObjects();
+
 	return true;
 }
 
 void BattleScene::addObjects()
 {
+	ship = Ship::create();
+	ship->initialize("GameObjects/playerShip2_green.png");
+	this->addChild(ship);
 }
 
 

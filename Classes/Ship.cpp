@@ -12,9 +12,9 @@ Ship::~Ship()
 {
 }
 
-void Ship::createObject(std::string filename)
+void Ship::initialize(std::string filename)
 {
-	Sprite* image = Sprite::create(filename);
+	Sprite* image = Sprite::create("GameObjects/playerShip2_green.png");
 	addChild(image);
 	image->setAnchorPoint(Vec2(0, 0));
 
@@ -22,11 +22,11 @@ void Ship::createObject(std::string filename)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	float posX = origin.x + visibleSize.width / 2;
-	float posY = origin.y + visibleSize.height / 2;
+	float posY = origin.y + visibleSize.height / 6;
 	setPosition(posX, posY);
 	setContentSize(image->getContentSize());
-//	Sprite::setAnchorPoint(Vec2(0,0));
 }
+
 
 void Ship::move(float dx, float dy)
 {
