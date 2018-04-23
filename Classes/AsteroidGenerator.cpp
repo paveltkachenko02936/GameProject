@@ -8,7 +8,9 @@
 USING_NS_CC;
 
 AsteroidGenerator::AsteroidGenerator() :
-	spawnInterval(3.0f)
+	spawnInterval(3.0f),
+	numAsteroids(0),
+	speedMul(1)
 {
 }
 
@@ -46,27 +48,34 @@ void AsteroidGenerator::run()
 	auto director = Director::getInstance();
 	sceneSize = director->getVisibleSize();
 	sceneOrigin = director->getVisibleOrigin();
-//	scene = Game::getInstance()->sceneManager->getCurrentScene();
 
 	srand(time(NULL));
 	Director::getInstance()->getScheduler()->schedule(
-		[this](float) {spawnAsteroid();}, this, spawnInterval, false, "customUpdate");
+		[this](float) {spawnAsteroid();}, this, settings.spawnInterval, false, "customUpdate");
 }
 
 void AsteroidGenerator::spawnAsteroid()
 {
-	int index = rand() % names.size();
-//	Asteroid* asteroid = Asteroid::create();
-//	asteroid->initialize(names[index]);
+	if (numAsteroids > 0 && numAsteroids % settings.objectsPerStage == 0)
+	{
+		speedMul *= settings.speedMultiplier;
+		CCLOG("speedIncreased!!");
+	}
 
-	Sprite* asteroid = Sprite::create(names[index]);
+	int index = rand() % names.size();
+	Asteroid* asteroid = Asteroid::create();
+	asteroid->initialize(names[index]);
 	asteroid->setRotation(rand() % 360);
+	float speed = (settings.startSpeed + rand() % 40) * speedMul; //задавыть из файла настроек при инициализации, модификаторы применять тут
+	asteroid->setSpeed(speed); 
 	auto size = asteroid->getContentSize();
 	int minX = int(sceneOrigin.x + size.width * asteroid->getAnchorPoint().x);
 	int maxX = int(sceneOrigin.x + sceneSize.width - size.width * asteroid->getAnchorPoint().x);
 	int posX = minX + rand() % (maxX - minX);
-	int posY = int(sceneOrigin.y + sceneSize.height - size.height * asteroid->getAnchorPoint().y);
+	int posY = int(sceneOrigin.y + sceneSize.height + size.height * asteroid->getAnchorPoint().y);
 
 	asteroid->setPosition(posX, posY);
 	Game::getInstance()->sceneManager->getCurrentScene()->addChild(asteroid);
+	numAsteroids++;
+	asteroid->move(0, -sceneSize.height - size.height);
 }

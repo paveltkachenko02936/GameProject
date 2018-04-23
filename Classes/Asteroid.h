@@ -12,8 +12,16 @@ public:
 	void initialize(std::string filename) override;
 	void move(float dx, float dy) override;
 
+	void setDamage(float value);
+	float getDamage();
+
+	void setSpeed(float value);
+	float getSpeed();
+
 	CREATE_FUNC(Asteroid);
 
 private:
+	float damage;
+	float speed;
 };
 
