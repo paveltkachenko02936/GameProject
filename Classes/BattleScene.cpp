@@ -34,6 +34,12 @@ bool BattleScene::init()
 	return true;
 }
 
+void BattleScene::onEnter()
+{
+	Node::onEnter();
+	Game::getInstance()->asteroidGenerator->run();
+}
+
 void BattleScene::addObjects()
 {
 	ship = Ship::create();

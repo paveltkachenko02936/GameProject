@@ -35,3 +35,8 @@ void SceneManager::switchScene(ESceneType type)
 		director->replaceScene(currentScene);
 }
 
+cocos2d::Scene * SceneManager::getCurrentScene()
+{
+	return currentScene;
+}
+

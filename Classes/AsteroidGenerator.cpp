@@ -1,5 +1,9 @@
+#include "Game.h"
 #include "AsteroidGenerator.h"
+#include "Asteroid.h"
 #include "cocos2d.h"
+#include <stdlib.h>
+#include <time.h>
 
 USING_NS_CC;
 
@@ -35,18 +39,34 @@ void AsteroidGenerator::init()
 	names.push_back("Meteors/meteorGrey_small2.png");
 	names.push_back("Meteors/meteorGrey_tiny1.png");
 	names.push_back("Meteors/meteorGrey_tiny2.png");
+}
 
-	for (size_t i = 0; i < names.size(); i++)
-	{
-		Sprite* sp = Sprite::create(names[i]);
-		sprites.push_back(sp);
-	}
+void AsteroidGenerator::run()
+{
+	auto director = Director::getInstance();
+	sceneSize = director->getVisibleSize();
+	sceneOrigin = director->getVisibleOrigin();
+//	scene = Game::getInstance()->sceneManager->getCurrentScene();
 
+	srand(time(NULL));
 	Director::getInstance()->getScheduler()->schedule(
 		[this](float) {spawnAsteroid();}, this, spawnInterval, false, "customUpdate");
 }
 
 void AsteroidGenerator::spawnAsteroid()
 {
-	CCLOG("spawn");
+	int index = rand() % names.size();
+//	Asteroid* asteroid = Asteroid::create();
+//	asteroid->initialize(names[index]);
+
+	Sprite* asteroid = Sprite::create(names[index]);
+	asteroid->setRotation(rand() % 360);
+	auto size = asteroid->getContentSize();
+	int minX = int(sceneOrigin.x + size.width * asteroid->getAnchorPoint().x);
+	int maxX = int(sceneOrigin.x + sceneSize.width - size.width * asteroid->getAnchorPoint().x);
+	int posX = minX + rand() % (maxX - minX);
+	int posY = int(sceneOrigin.y + sceneSize.height - size.height * asteroid->getAnchorPoint().y);
+
+	asteroid->setPosition(posX, posY);
+	Game::getInstance()->sceneManager->getCurrentScene()->addChild(asteroid);
 }

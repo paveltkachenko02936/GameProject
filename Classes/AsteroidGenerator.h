@@ -9,12 +9,16 @@ public:
 	~AsteroidGenerator();
 
 	void init();
+	void run();
 
 private:
 	void spawnAsteroid();
 
-	float spawnInterval;
 	std::vector<std::string> names;
 	std::vector<cocos2d::Sprite*> sprites;
+	float spawnInterval;
+	cocos2d::Size sceneSize;
+	cocos2d::Vec2 sceneOrigin;
+	cocos2d::Scene* scene;
 };
 

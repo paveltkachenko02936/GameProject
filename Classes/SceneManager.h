@@ -15,6 +15,7 @@ public:
 	};
 
 	void switchScene(ESceneType type);
+	cocos2d::Scene* getCurrentScene();
 
 private:
 	cocos2d::Scene* currentScene;

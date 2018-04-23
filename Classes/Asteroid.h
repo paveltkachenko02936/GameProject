@@ -12,7 +12,8 @@ public:
 	void initialize(std::string filename) override;
 	void move(float dx, float dy) override;
 
-private:
+	CREATE_FUNC(Asteroid);
 
+private:
 };
 

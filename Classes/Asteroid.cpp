@@ -20,7 +20,7 @@ void Asteroid::initialize(std::string filename)
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	float posX = origin.x + visibleSize.width / 2;
-	float posY = origin.y + visibleSize.height / 2;
+	float posY = origin.y + visibleSize.height;
 	setPosition(posX, posY);
 	setContentSize(image->getContentSize());
 }
