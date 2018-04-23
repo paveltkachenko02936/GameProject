@@ -2,6 +2,7 @@
 
 #include "AsteroidGenerator.h"
 #include "SceneManager.h"
+#include "CollisionDetector.h"
 
 class Game
 {
@@ -14,6 +15,7 @@ public:
 
 	AsteroidGenerator* asteroidGenerator;
 	SceneManager* sceneManager;
+	CollisionDetector* collisionDetector;
 	
 private:
 	//-------------------

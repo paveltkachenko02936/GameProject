@@ -17,9 +17,6 @@ bool BattleScene::init()
 	if (!Scene::init())
 		return false;
 
-	auto game = Game::getInstance();
-	game->asteroidGenerator->init();
-
 	auto touchListener = EventListenerTouchOneByOne::create();
 
 	touchListener->onTouchBegan = CC_CALLBACK_2(BattleScene::onTouchBegan, this);
@@ -31,13 +28,19 @@ bool BattleScene::init()
 
 	addObjects();
 
+	auto game = Game::getInstance();
+	game->asteroidGenerator->init();
+	game->collisionDetector->init(ship);
+
 	return true;
 }
 
 void BattleScene::onEnter()
 {
 	Node::onEnter();
-	Game::getInstance()->asteroidGenerator->run();
+	auto game = Game::getInstance();
+	game->asteroidGenerator->run();
+	game->collisionDetector->run();
 }
 
 void BattleScene::addObjects()

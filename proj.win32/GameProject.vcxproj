@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Asteroid.cpp" />
     <ClCompile Include="..\Classes\AsteroidGenerator.cpp" />
     <ClCompile Include="..\Classes\BattleScene.cpp" />
+    <ClCompile Include="..\Classes\CollisionDetector.cpp" />
     <ClCompile Include="..\Classes\Game.cpp" />
     <ClCompile Include="..\Classes\GameObject.h" />
     <ClCompile Include="..\Classes\SceneManager.cpp" />
@@ -165,6 +166,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Asteroid.h" />
     <ClInclude Include="..\Classes\AsteroidGenerator.h" />
     <ClInclude Include="..\Classes\BattleScene.h" />
+    <ClInclude Include="..\Classes\CollisionDetector.h" />
     <ClInclude Include="..\Classes\Game.h" />
     <ClInclude Include="..\Classes\SceneManager.h" />
     <ClInclude Include="..\Classes\Ship.h" />

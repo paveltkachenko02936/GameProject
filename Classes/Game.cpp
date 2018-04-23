@@ -20,6 +20,7 @@ void Game::init()
 {
 	sceneManager = new SceneManager();
 	asteroidGenerator = new AsteroidGenerator();
+	collisionDetector = new CollisionDetector();
 }
 
 void Game::run()
