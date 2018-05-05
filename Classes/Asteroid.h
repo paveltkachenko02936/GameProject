@@ -11,6 +11,8 @@ public:
 
 	void initialize(std::string filename) override;
 	void move(float dx, float dy) override;
+	void hit(float damage) override;
+	void destroy() override;
 
 	void setDamage(float value);
 	float getDamage();

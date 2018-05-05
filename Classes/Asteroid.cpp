@@ -1,4 +1,5 @@
 #include "Asteroid.h"
+#include "Game.h"
 
 USING_NS_CC;
 
@@ -21,12 +22,17 @@ void Asteroid::initialize(std::string filename)
 
 void Asteroid::move(float dx, float dy)
 {
-	auto sequence = Sequence::create(
-		MoveBy::create(std::abs(dy) / speed, Point(dx, dy)),
-		RemoveSelf::create(true),
-		nullptr);
+	Game::getInstance()->collisionDetector->addObject(this);
+
+	auto action = MoveBy::create(std::abs(dy) / speed, Point(dx, dy));
+	auto callback = CallFunc::create(this, CC_CALLFUNC_SELECTOR(Asteroid::destroy));
+	auto sequence = Sequence::create(action, callback, NULL);
 
 	this->runAction(sequence);
+}
+
+void Asteroid::hit(float damage)
+{
 }
 
 void Asteroid::setDamage(float value)
@@ -47,4 +53,11 @@ void Asteroid::setSpeed(float value)
 float Asteroid::getSpeed()
 {
 	return speed;
+}
+
+void Asteroid::destroy()
+{
+	this->stopAllActions();
+	Game::getInstance()->collisionDetector->removeObject(this);
+	this->removeFromParentAndCleanup(true);
 }

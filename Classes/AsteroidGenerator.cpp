@@ -66,7 +66,8 @@ void AsteroidGenerator::spawnAsteroid()
 	Asteroid* asteroid = Asteroid::create();
 	asteroid->initialize(names[index]);
 	asteroid->setRotation(rand() % 360);
-	float speed = (settings.startSpeed + rand() % 40) * speedMul; //задавыть из файла настроек при инициализации, модификаторы применять тут
+	asteroid->setDamage(10);
+	float speed = (settings.startSpeed + rand() % 40) * speedMul; //задавать из файла настроек при инициализации, модификаторы применять тут
 	asteroid->setSpeed(speed); 
 	auto size = asteroid->getContentSize();
 	int minX = int(sceneOrigin.x + size.width * asteroid->getAnchorPoint().x);

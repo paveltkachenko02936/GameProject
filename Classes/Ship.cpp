@@ -50,6 +50,14 @@ void Ship::move(float dx, float dy)
 
 }
 
+void Ship::hit(float damage)
+{
+}
+
+void Ship::destroy()
+{
+}
+
 void Ship::capture(bool value)
 {
 	captured = value;
