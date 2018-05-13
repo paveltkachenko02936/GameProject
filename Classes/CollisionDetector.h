@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "Ship.h"
+#include "Asteroid.h"
 
 class CollisionDetector
 {
@@ -17,6 +18,7 @@ public:
 private:
 	void check();
 
-	std::vector<GameObject*> objects;
+	typedef std::vector<GameObject*> Objects;
+	std::map<GameObject::EObjectType, Objects> objectsMap;
 	Ship* ship;
 };

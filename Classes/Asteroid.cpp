@@ -5,6 +5,7 @@ USING_NS_CC;
 
 Asteroid::Asteroid()
 {
+	type = EObjectType::Asteroid;
 }
 
 Asteroid::~Asteroid()
@@ -33,26 +34,6 @@ void Asteroid::move(float dx, float dy)
 
 void Asteroid::hit(float damage)
 {
-}
-
-void Asteroid::setDamage(float value)
-{
-	damage = value;
-}
-
-float Asteroid::getDamage()
-{
-	return damage;
-}
-
-void Asteroid::setSpeed(float value)
-{
-	speed = value;
-}
-
-float Asteroid::getSpeed()
-{
-	return speed;
 }
 
 void Asteroid::destroy()

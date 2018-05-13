@@ -6,6 +6,7 @@ USING_NS_CC;
 
 Ship::Ship()
 {
+	type = EObjectType::Ship;
 }
 
 Ship::~Ship()

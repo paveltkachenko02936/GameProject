@@ -14,16 +14,7 @@ public:
 	void hit(float damage) override;
 	void destroy() override;
 
-	void setDamage(float value);
-	float getDamage();
-
-	void setSpeed(float value);
-	float getSpeed();
-
 	CREATE_FUNC(Asteroid);
-
-private:
-	float damage;
-	float speed;
+	
 };
 
