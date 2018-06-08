@@ -18,7 +18,7 @@ public:
 private:
 	void check();
 
-	typedef std::vector<GameObject*> Objects;
+	using Objects = std::vector<GameObject*>;
 	std::map<GameObject::EObjectType, Objects> objectsMap;
 	Ship* ship;
 };
